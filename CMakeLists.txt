@@ -1,21 +1,12 @@
 cmake_minimum_required(VERSION 3.5)
 project(Emotiv
 	VERSION 0.1)
+include(Findliblsl.cmake)
 
-# set up LSL if not done already
-if(NOT TARGET LSL::lsl)
-	# when building out of tree LSL_ROOT needs to be specified on the cmd line
-	file(TO_CMAKE_PATH "${LSL_INSTALL_ROOT}" LSL_INSTALL_ROOT)
-	list(APPEND LSL_INSTALL_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../LSL/liblsl/build/install")
-	find_package(LSL HINTS ${LSL_INSTALL_ROOT}/share/LSL/ ${LSL_INSTALL_ROOT}/LSL/share/LSL QUIET)
-	if(NOT LSL_FOUND)
-		message(FATAL_ERROR "Precompiled LSL was not found. See https://github.com/labstreaminglayer/labstreaminglayer/blob/master/doc/BUILD.md#lsl_install_root for more information.")
-	endif()
-	list(APPEND CMAKE_MODULE_PATH ${LSL_DIR})
-	message(STATUS "Looking for LSLCMake in ${LSL_DIR}")
-	include(LSLCMake)
-endif()
-
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
 find_package(Qt5 REQUIRED COMPONENTS Xml Widgets)
 
 # Boost
@@ -39,10 +30,10 @@ target_include_directories(${PROJECT_NAME}
 	${EmotivSDK_INCLUDE_DIRS}
 )
 target_link_libraries(${PROJECT_NAME}
-    PRIVATE
-    Qt5::Widgets
+	PRIVATE
+	Qt5::Widgets
     Qt5::Xml
-    LSL::lsl
+	LSL::lsl
 	Boost::thread
 	Boost::regex
 	${EmotivSDK_LIBRARIES}
