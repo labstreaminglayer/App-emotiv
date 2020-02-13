@@ -30,7 +30,7 @@ Chadwick Boulay at the Ottawa Hospital Research Institute
         * customize with your own -DLSL_ROOT=path/to/LSL/build/install dir.
         * customize with your own -DEDK_ROOT="path\to\Emotiv SDK Premium Edition v3.3.2" if not using 3.3.2 or 3.3.3 in default directory.
         * customize with your own -DBOOST_ROOT=C:\path\to\boost_ver\
-1. Open Emotiv.sln
+1. Open build\Emotiv.sln
 1. Change the configuration from Debug to Release
 1. Right click on INSTALL and build.
 1. In the labstreaminglayer/build/lslRelease/lslinstall dir, there should be LSLEmotiv/LSLEmotiv.exe and all the necessary dll files.

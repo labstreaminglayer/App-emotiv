@@ -1,0 +1,9 @@
+ui_*.h
+/build*/
+/CMakeLists.txt.user
+/CMakeLists.json
+/.vs/
+/CMakeSettings.json
+/out/
+/hidapi-win/
+.DS_Store
